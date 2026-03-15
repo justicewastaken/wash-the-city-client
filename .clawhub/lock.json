@@ -32,6 +32,26 @@
     "larry": {
       "version": "1.0.0",
       "installedAt": 1773426788623
+    },
+    "x-twitter": {
+      "version": "2.3.1",
+      "installedAt": 1773609713697
+    },
+    "twitter-scrape": {
+      "version": "1.0.0",
+      "installedAt": 1773609723758
+    },
+    "x-api": {
+      "version": "0.1.0",
+      "installedAt": 1773609727914
+    },
+    "twitter-post": {
+      "version": "1.0.0",
+      "installedAt": 1773609730798
+    },
+    "zeelin-twitter-web-autopost": {
+      "version": "0.6.1",
+      "installedAt": 1773609741418
     }
   }
 }
