@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Gem Salon Spa",
+    "email": "hello@gemsalonspa.com",
+    "website": "https://phorest.com/book/salons/gemsalonspa?rwg_token=AFd1xnGiUfyWg7MsLSAUJ0yuehTmqhqCEboeLT0msusIGB_h0tWig_mApuyRsEQmoRJDLdG8MzcreUalPivbBkMzzmep8b8C-A==",
+    "phone": "(651) 222-3839",
+    "booking_platform": "Phorest",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Moxie Hair Salon",
+    "email": "owners@moxiesalon.com",
+    "website": "https://online.rosysalonsoftware.com/about/50020",
+    "phone": "(651) 251-6820",
+    "booking_platform": "Rosy",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Lili Salon Spa",
+    "email": "liligalleria@lilisalonspa.com",
+    "website": "https://na0.meevo.com/CustomerPortal/onlinebooking?tenantId=101108&LocationId=103430&meevo_channel=GoogleBookNow&utm_source=GMB&utm_medium=booknow&utm_campaign=meevo_onlinebooking&rwg_token=AFd1xnEDTd_FDYUgHXosMfh75a_NBZbN2EGnLMo5KxCM2mN03viUfVAx-5J7i84HgYZdFsbmxj3qtfBru3Ulo3StOQxRqfjdQA=",
+    "phone": "(952) 224-3300",
+    "booking_platform": "Meevo",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Spark Salon",
+    "email": "sparksalonstyle@gmail.com",
+    "website": "https://na0.meevo.com/CustomerPortal/onlinebooking?tenantId=101930&LocationId=104402&meevo_channel=GoogleBookNow&utm_source=GMB&utm_medium=booknow&utm_campaign=meevo_onlinebooking&rwg_token=AFd1xnF0xe29Ay9qQOWYCqvu_asWrh1tG_5X5Aq_sNJNxAo0_zfroU8pNo3G4R8RMlesCXq5tsfCypkBBMjNBd2pdL6EjI2JRg=",
+    "phone": "(763) 478-9800",
+    "booking_platform": "Meevo",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "The Hair District Collective Maple Grove",
+    "email": "thehairdistrictmg@gmail.com",
+    "website": "https://na0.meevo.com/CustomerPortal/onlinebooking?tenantId=100359&LocationId=102584&meevo_channel=GoogleBookNow&utm_source=GMB&utm_medium=booknow&utm_campaign=meevo_onlinebooking&rwg_token=AFd1xnGI0SOd7lvtJMm6SmdNn6T5il3EtwH9GZWuK2FJ-vQzg01zGHCD_7ADGOE1GJqlebrGJD9rtn1tLEC2oXSHvbGcnnwf5w=",
+    "phone": "(763) 657-7900",
+    "booking_platform": "Meevo",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Reflect Salon",
+    "email": "appointments@reflect.salon",
+    "website": "https://phorest.com/book/salons/reflectsalonandspa1?rwg_token=AFd1xnH8rR8D94u4V_7UNtaiQoRtrKLeqPzL9YeJbelsqYRlVF_cf1ugUtH2n9bXsq_92wNQl5yqWc2JflJms-WpQBXkRQD7zw=",
+    "phone": "(763) 559-3185",
+    "booking_platform": "Phorest",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Kalla Lily Salon & Spa",
+    "email": "jen@kallalily.com",
+    "website": "https://phorest.com/book/salons/bulaincdbakallalilysalonspa?rwg_token=AFd1xnE8WcDouNDFGFuRbXjej5B1d_Dl3LgGSuNlyxQbz9TnlQkPM1Z9ugR9uRzDu2Uv8vMUWIfqztQkCI2j7l5RbmkfSPd2fg=",
+    "phone": "(763) 416-1700",
+    "booking_platform": "Phorest",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Signature Salon Of Woodbury",
+    "email": "signaturesalonofwoodbury@gmail.com",
+    "website": "https://phorest.com/book/salons/signaturesalonofwoodbury",
+    "phone": "(651) 797-3975",
+    "booking_platform": "Phorest",
+    "city": "Minneapolis",
+    "status": "prospect"
+  },
+  {
+    "name": "Salon Ultimo",
+    "email": "info@salonultimo.com",
+    "website": "https://na0.meevo.com/CustomerPortal/onlinebooking?tenantId=100828&LocationId=103109&meevo_channel=GoogleBookNow&utm_source=GMB&utm_medium=booknow&utm_campaign=meevo_onlinebooking&rwg_token=AFd1xnFypuxF--F-7gxYvcncqNj0ABhzckcwWtPatrYXniD7Z2f-MKy8arZvfS_Ky9ftugzLxCnutMFA7eGTNur8tQ2nyWlU7A=",
+    "phone": "(651) 738-5904",
+    "booking_platform": "Meevo",
+    "city": "Minneapolis",
+    "status": "prospect"
+  }
+]

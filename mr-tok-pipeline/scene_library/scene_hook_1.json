@@ -1,0 +1,15 @@
+{
+  "id": "scene_hook_1",
+  "name": "Dog asks for second date",
+  "camera_holder": "first_person",
+  "camera_height": "eye_level",
+  "camera_angle": "forward_facing",
+  "subject_primary": "golden_retriever",
+  "subject_action": "looking_at_owner",
+  "subject_position": "center_frame",
+  "background_environment": "living_room_couch",
+  "background_lighting": "warm_indoor",
+  "style_color_palette": "warm_cream_earthy",
+  "mood": "funny_relatable",
+  "prompt_template": "iPhone selfie from first-person perspective, golden retriever looking at camera with pleading expression, sitting on a couch in a cozy living room with warm lighting, candid moment, slight grain."
+}

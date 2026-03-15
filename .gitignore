@@ -1,0 +1,31 @@
+# Sensitive / machine-specific
+.github-token.json
+.config/gog/
+.gmail/
+google_credentials.json
+*.pem
+*.key
+node_modules/
+venv/
+.env
+.DS_Store
+
+# Temporary / cache
+/temp/
+/tmp/
+.cache/
+*.log
+*.tmp
+
+# Skill-specific ignores (already in skill repos)
+/clawhub/
+/clawdb/
+/mr-tok-pipeline/node_modules/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+
+# Backups (avoid nesting)
+backup*.tar.gz

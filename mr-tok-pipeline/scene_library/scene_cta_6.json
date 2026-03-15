@@ -1,0 +1,15 @@
+{
+  "id": "scene_cta_6",
+  "name": "Final CTA",
+  "camera_holder": "first_person",
+  "camera_height": "eye_level",
+  "camera_angle": "forward_facing",
+  "subject_primary": "pupjewelry_logo",
+  "subject_action": "centered",
+  "subject_position": "center_frame",
+  "background_environment": "simple_texture",
+  "background_lighting": "soft_even",
+  "style_color_palette": "brand_neutral",
+  "mood": "clear_direct",
+  "prompt_template": "iPhone style photo, centered text 'PupJewelry.com' on a soft neutral textured background, clean, minimalist, looks like a phone screenshot, no extra elements."
+}

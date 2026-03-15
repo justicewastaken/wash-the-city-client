@@ -1,0 +1,22 @@
+{
+  "id": "persona_dog_mom",
+  "name": "Dog Mom",
+  "demographics": {
+    "age_range": "25-40",
+    "lifestyle": "pet_centered"
+  },
+  "home": {
+    "aesthetic": "warm_cream_tones",
+    "details": ["lush_plants", "cozy_textiles", "dog_toys_visible"]
+  },
+  "habits": {
+    "date_nights": "Italian_restaurants",
+    "walks": "2am_walks",
+    "social_media": "TikTok_Instagram"
+  },
+  "camera_roll_style": {
+    "type": "warm_candid_iphone_shots",
+    "characteristics": ["slightly_imperfect_framing", "natural_light", "unposed_moments"]
+  },
+  "values": ["pet_health", "quality_time", "personalization", "authenticity"]
+}

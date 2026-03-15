@@ -1,0 +1,15 @@
+{
+  "id": "scene_solution_4",
+  "name": "PupJewelry intro",
+  "camera_holder": "first_person",
+  "camera_height": "eye_level",
+  "camera_angle": "forward_facing",
+  "subject_primary": "personalized_pet_jewelry_box",
+  "subject_action": "displayed_open",
+  "subject_position": "center_frame",
+  "background_environment": "wooden_table",
+  "background_lighting": "soft_natural",
+  "style_color_palette": "neutral_earthy",
+  "mood": "solution_intro",
+  "prompt_template": "iPhone overhead flat lay photo on a rustic wooden table. Open jewelry box with custom-engraved pet necklace inside showing the pet's name. Soft natural lighting, neutral earthy tones, shallow depth of field, product photography style."
+}

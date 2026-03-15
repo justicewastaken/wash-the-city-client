@@ -1,0 +1,15 @@
+{
+  "id": "scene_buildup_3",
+  "name": "My dog lives here",
+  "camera_holder": "first_person",
+  "camera_height": "eye_level",
+  "camera_angle": "forward_facing",
+  "subject_primary": "dog",
+  "subject_action": "sitting_protective",
+  "subject_position": "center_frame",
+  "background_environment": "cozy_living_room",
+  "background_lighting": "soft_natural_window",
+  "style_color_palette": "warm_tones",
+  "mood": "sassy_relatable",
+  "prompt_template": "iPhone photo from first-person perspective, a medium-sized dog sitting in front of the camera looking directly at viewer with a confident expression, cozy living room interior with soft window light, warm color palette."
+}

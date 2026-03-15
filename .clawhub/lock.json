@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "skills": {
+    "openai-whisper": {
+      "version": "1.0.0",
+      "installedAt": 1773383689155
+    },
+    "himalaya": {
+      "version": "1.0.0",
+      "installedAt": 1773383751057
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1773383793663
+    },
+    "blogwatcher": {
+      "version": "1.0.0",
+      "installedAt": 1773383900068
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1773383912195
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1773384874387
+    },
+    "upwork": {
+      "version": "1.0.0",
+      "installedAt": 1773423966134
+    },
+    "larry": {
+      "version": "1.0.0",
+      "installedAt": 1773426788623
+    }
+  }
+}
