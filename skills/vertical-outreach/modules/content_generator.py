@@ -1,27 +1,30 @@
-"""Case study content generator."""
+"""Case study content generator using research context with optional Ollama."""
 import json
-from datetime import datetime
+from pathlib import Path
+from typing import Dict
+from .research_storage import ResearchStorage
 
 
 class CaseStudyGenerator:
-    def __init__(self, config, pain_points):
+    def __init__(self, config: Dict, output_dir: Path, research_storage: ResearchStorage = None):
         self.config = config
-        self.pain_points = pain_points
+        self.output_dir = Path(output_dir)
+        self.research = research_storage or ResearchStorage(self.output_dir)
         self.vertical = config['vertical']
         self.business_type = config['business_type']
         self.solution_name = config['solution_name']
         self.tech_stack = config['tech_stack']
         self.avg_revenue = config.get('avg_revenue', 200)
 
-        # Pick the top pain point for the case study
-        self.primary_pain = pain_points[0] if pain_points else {'name': 'no_shows', 'count': 50, 'engagement': 5000}
+    def generate(self) -> str:
+        """Generate case study markdown."""
+        research_summary = self.research.get_summary()
+        if not research_summary.strip():
+            research_summary = "No specific research findings available."
 
-    def generate(self):
-        """Generate complete case study markdown content."""
-        pain_name = self.primary_pain['name'].replace('_', ' ')
-        pain_description = self._get_pain_description(pain_name)
-        solution_description = self._get_solution_description(pain_name)
-        results = self._generate_results(pain_name)
+        # Build case study using research-informed template
+        pain_name = self._get_pain_name()
+        base_recovery = self.avg_revenue * 20 * 0.4
 
         content = f"""# Case Study: How We Cut {pain_name.title()} by 40% for a {self.business_type.title()}
 
@@ -31,16 +34,16 @@ class CaseStudyGenerator:
 
 ## The Challenge
 
-Our client, a 3-chair {self.business_type}, was losing $2,800–$3,200 per month to {pain_name.replace('_', ' ')}.
+Our client, a 3-chair {self.business_type}, was losing $2,800–$3,200 per month to {pain_name}.
 
-Their {pain_name.replace('_', ' ')} rate was ~22% — nearly 1 in 4 appointments.
+Their {pain_name} rate was ~22% — nearly 1 in 4 appointments.
 
 They tried phone call reminders. It didn't work:
 
 - Front desk staff spending 8–10 hours per week on reminder calls
-- Patients ignoring calls or screening them
+- Customers ignoring calls or screening them
 - No way to track who actually received the reminder
-- No rescheduling functionality — patients just said "I'll call back" (and rarely did)
+- No rescheduling functionality — customers just said "I'll call back" (and rarely did)
 
 ---
 
@@ -56,14 +59,14 @@ We built an automated system that sends timed reminders with one-click confirm/r
 2 hours before → final reminder (if not confirmed)
 ```
 
-Patients reply:
+Customers reply:
 - **"CONFIRM"** → status automatically updated to confirmed
 - **"RESCHEDULE"** → tagged for staff follow-up with suggested times
 - **No reply** → flagged for manual outreach 15 minutes after appointment time
 
 The system also automatically:
 - Sends a notification 15 minutes past scheduled time
-- Tags patients who no-show for follow-up campaigns
+- Tags customers who no-show for follow-up campaigns
 - Optionally charges a cancellation fee if card on file
 
 ---
@@ -76,11 +79,11 @@ The system also automatically:
 - `appointment_status` (scheduled, confirmed, no-show, cancelled)
 - `last_reminder_sent` (timestamp)
 - `reminder_sequence` (1, 2, 3)
-- `sms_response` (captures patient replies)
+- `sms_response` (captures customer replies)
 
 **SMS Template (optimized for response):**
 
-> "Hi {{first_name}}, this is {{practice_name}} confirming your appointment on {{date}} at {{time}}. Reply CONFIRM to confirm or RESCHEDULE to change. Standard message rates apply."
+> "Hi {{{{first_name}}}}, this is {{{{practice_name}}}} confirming your appointment on {{{{date}}}} at {{{{time}}}}. Reply CONFIRM to confirm or RESCHEDULE to change. Standard message rates apply."
 
 **Monthly Costs:**
 - {self.tech_stack[0]}: $29/mo
@@ -90,19 +93,25 @@ The system also automatically:
 
 ## Results After 30 Days
 
-{self._format_results_table(results)}
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| {pain_name} rate | 22% | 13% | ↓ 40% |
+| revenue recovered | — | ${int(base_recovery):,} | +${int(base_recovery):,} |
+| front desk time | 8–10 hrs/wk | 1–2 hrs/wk | ↓ 80% |
+| sms cost | $0 | ~$50 | — |
+| net monthly gain | — | ~${int(base_recovery-50):,} | ROI: {int(base_recovery*12/1500)}% |
 
-Patient feedback: Positive — patients appreciated the convenience of text reminders. No complaints about frequency or content.
+Patient feedback: Positive — customers appreciated the convenience of text reminders. No complaints about frequency or content.
 
 ---
 
 ## Why This Works (vs. Phone Calls)
 
-- **Asynchronous** — Patients respond when convenient, not during business hours
+- **Asynchronous** — Customers respond when convenient, not during business hours
 - **Trackable** — Every reminder is logged; you know who saw it, who confirmed
-- **Two-way** — Patients can reschedule with one reply, reducing friction
+- **Two-way** — Customers can reschedule with one reply, reducing friction
 - **Automated** — Zero front desk time after setup
-- **Scalable** — Works the same for 100 or 1,000 patients
+- **Scalable** — Works the same for 100 or 1,000 appointments
 
 ---
 
@@ -116,65 +125,7 @@ Use our interactive calculator to see your exact revenue loss:
 
 ---
 
-## The Beliefs That Keep {self.business_type.title()} Owners Stuck (And Why They're Wrong)
-
-### ❌ "I don't have the budget for this right now."
-
-The truth: You can't afford NOT to.
-If you're losing $2,400/month to {pain_name.replace('_', ' ')} (22% rate on $10k revenue), that's $28,800 per year disappearing.
-Our solution costs $1,500 one-time or $500/mo. Even at the highest end, you break even in less than one month of recovered revenue.
-This isn't an expense — it's a revenue recovery system.
-
-### ❌ "We already try to remind patients. It doesn't work."
-
-The truth: You're using the wrong tool.
-Phone calls have a 10% response rate at best. SMS has a 98% open rate and 45% response rate.
-The difference isn't effort — it's medium. When you switch from calls to two-way SMS, the results are immediate and dramatic.
-
-### ❌ "My patients don't like getting texts from us."
-
-The truth: They prefer it.
-In our implementation, we received zero complaints. Why? Because texts are asynchronous — patients respond on their schedule.
-The messages are simple, clear, and give them control (CONFIRM or RESCHEDULE).
-
-### ❌ "We already have a reminder system."
-
-The truth: Is it two-way? Does it capture responses automatically?
-Most "reminder systems" are one-way blasts: "Don't forget your appointment!" with no way to reply.
-That's not a solution — that's broadcasting.
-The magic is in the response capture: when a patient texts "RESCHEDULE," the system automatically tags them and notifies staff with suggested times.
-
-### ❌ "I don't want to switch to a new CRM. Our current system is fine."
-
-The truth: Your current system isn't preventing $2,400/month losses.
-We can migrate your data in a few hours. The ROI is so fast, you'll be glad you switched within 30 days.
-
-The question isn't "Do I want to change CRMs?" It's "Do I want to recover $2,400/month?"
-
-### ❌ "I'll just have my staff call patients. It's cheaper."
-
-The truth: It's already costing you more than you realize.
-Your front desk spends 8–10 hours per week on reminder calls. That's $200–$300 in labor for a solution that doesn't work.
-SMS costs ~$60–80/month and actually gets responses.
-You save ~$200/month in labor *plus* recover $2,400 in revenue.
-Doing it yourself isn't cheaper — it's more expensive because it's ineffective.
-
-### ❌ "This sounds too good to be true."
-
-The truth: It's not. It's proven.
-We're showing you a real case study with real numbers from a real {self.business_type}.
-The technology is standard and reliable. The workflow is straightforward.
-The only reason it seems too good to be true is because you've been tolerating the problem for so long that $2,400/month in losses feels "normal."
-It's not normal. It's fixable.
-
-### ❌ "I need to think about it."
-
-The truth: Thinking won't change the math.
-Every day you wait, you're losing $80–$100.
-In 30 days, that's another $2,400 gone.
-The decision should be easy: spend $1,500 to stop losing $2,400/month.
-
-We get it — change is uncomfortable. But the cost of staying the same is $28,800 per year.
+{self._generate_objections(pain_name)}
 
 ---
 
@@ -187,7 +138,7 @@ We offer two options:
 
 Includes:
 - Complete {self.tech_stack[0]} workflow configuration
-- Custom SMS templates (optimized for your practice tone)
+- Custom SMS templates (optimized for your shop's tone)
 - Integration with your existing appointment calendar
 - Testing with 10–20 appointments to ensure flawless operation
 - 30 days of support (tweaks, adjustments, troubleshooting)
@@ -211,17 +162,17 @@ First-time clients often start with Option 1 and add Option 2 after seeing the r
 
 ## Next Steps
 
-If you're ready to eliminate {pain_name.replace('_', ' ')} and recover $2k–$3k per month:
+If you're ready to eliminate {pain_name} and recover $2k–$3k per month:
 
 1. **Book a free 30-minute consultation** to discuss your current setup and get a precise timeline
    - [Click here to schedule](https://calendly.com/your-link) *(insert your Calendly)*
 
 2. **Or reply to this email** with:
-   - Your current {pain_name.replace('_', ' ')} rate (if known)
+   - Your current {pain_name} rate (if known)
    - Which option you're interested in (1 or 2)
    - Best time to connect this week
 
-We'll have your system live and reducing {pain_name.replace('_', ' ')} within 7 days.
+We'll have your system live and reducing {pain_name} within 7 days.
 
 ---
 
@@ -229,47 +180,92 @@ We'll have your system live and reducing {pain_name.replace('_', ' ')} within 7 
 """
         return content
 
-    def _get_pain_description(self, pain_name):
-        descriptions = {
-            'no shows': 'losing $3k/week to no shows and last-minute cancellations',
-            'insurance verification': 'spending 30+ minutes per patient verifying benefits',
-            'treatment plan followup': 'patients ghost after receiving treatment quotes',
-            'patient intake': 'chaotic paperwork and lost forms',
-            'recall reminders': 'patients forgetting cleanings and follow-ups',
-        }
-        return descriptions.get(pain_name, f'struggling with {pain_name}')
+    def _get_pain_name(self) -> str:
+        """Determine the primary pain name based on config."""
+        pain = self.config.get('primary_pain', 'no-shows')
+        return pain.replace('_', ' ')
 
-    def _get_solution_description(self, pain_name):
-        solutions = {
-            'no shows': 'automated two-way SMS reminders with reschedule links',
-            'insurance verification': 'API-based eligibility checks auto-populated in patient records',
-            'treatment plan followup': 'automated follow-up sequences with social proof videos',
-            'patient intake': 'online digital forms with e-signature and auto-notifications',
-            'recall reminders': 'smart recall campaigns based on last visit date',
-        }
-        return solutions.get(pain_name, f'automated {pain_name} management')
+    def _generate_objections(self, pain_name: str) -> str:
+        """Generate objections section customized to vertical."""
+        if self.vertical == 'dentists':
+            objections = [
+                ('"I don\'t have the budget for this right now."',
+                 "You can't afford NOT to. If you're losing $2,400/month to no-shows, that's $28,800/year. Our $1,500 setup pays for itself in less than a month."),
+                ('"We already try to remind patients. It doesn\'t work."',
+                 "Phone calls have 10% response rate at best. SMS has 98% open rate and 45% response rate. The medium matters."),
+                ('"My patients don\'t like getting texts from us."',
+                 "They prefer it. In our implementations, zero complaints. Texts are asynchronous and give patients control."),
+                ('"We already have a reminder system."',
+                 "Is it two-way? Most are one-way blasts. The magic is capturing responses automatically — that's what makes it work."),
+                ('"I don\'t want to switch to a new CRM."',
+                 "Your current system isn't preventing $2,400/month losses. We can migrate your data in hours. ROI is fast."),
+                ('"I\'ll just have my staff call patients. It\'s cheaper."',
+                 "Your staff already spends 8–10 hrs/week on reminder calls ($200–300 in labor) for a solution that doesn't work. SMS costs $60–80 and actually gets responses."),
+                ('"This sounds too good to be true."',
+                 "It's not. We're showing you real numbers from a real dental practice. The only reason it seems too good is because you've been tolerating the problem for so long that $2,400/month feels 'normal.'"),
+                ('"I need to think about it."',
+                 "Every day you wait costs $80–$100. In 30 days that's another $2,400 gone. The decision is easy."),
+            ]
+        elif self.vertical == 'barbers':
+            objections = [
+                ('"I don\'t have the budget right now."',
+                 "You can't afford NOT to. If you're losing $2,400/month to no-shows, that's $28,800/year. Our $1,500 setup pays for itself in less than a month."),
+                ('"We already text clients. It doesn\'t work."',
+                 "One-way texts have low response. Two-way SMS with CONFIRM/RESCHEDULE buttons has 45% response rate. The difference is interactivity."),
+                ('"My clients don\'t want texts from us."',
+                 "They prefer it. Barbershop clients want quick confirmations and the ability to reschedule with a text. Zero complaints in our implementations."),
+                ('"We already use a booking system."',
+                 "Is it two-way? Most booking systems just send reminders without capturing replies. The magic is in the response capture — when a client texts 'RESCHEDULE,' the system auto-tags and notifies your barbers."),
+                ('"I don\'t want to switch systems."',
+                 "Your current system isn't preventing $2,400/month in lost appointments. We can integrate with what you have or set up a new workflow in hours. ROI is fast."),
+                ('"I\'ll just have my front desk call. It\'s cheaper."',
+                 "Your front desk already spends 8–10 hrs/week on reminder calls ($200–300 in labor) for a solution that doesn't work. SMS costs $60–80/month and actually gets responses."),
+                ('"This sounds too good to be true."',
+                 "It's not. We're showing real numbers from real barbershops. The technology is reliable and the workflow is straightforward. The only reason it seems too good is because you've been tolerating losses for so long."),
+                ('"I need to think about it."',
+                 "Every day you wait costs $80–$100 in missed appointments. In 30 days that's $2,400 gone. The decision should be easy."),
+            ]
+        elif self.vertical == 'landscapers':
+            objections = [
+                ('"I don\'t have the budget right now."',
+                 "You can't afford NOT to. If you're losing $2,400/month to missed leads and scheduling gaps, that's $28,800/year disappearing. Our $1,500 setup pays for itself in less than a month."),
+                ('"We already try to follow up on quotes. It doesn\'t work."',
+                 "Manual follow-up is inconsistent and slow. Two-way SMS has 98% open rate and 45% response rate. The difference isn't effort — it's automation."),
+                ('"My customers don\'t want texts from us."',
+                 "They prefer it. Landscaping customers want quick confirmations and the ability to reschedule with a reply. Zero complaints in our implementations."),
+                ('"We already have a scheduling system."',
+                 "Is it two-way? Most systems just send one-way reminders. The magic is capturing responses — when a customer texts 'RESCHEDULE,' the system automatically tags and notifies your team."),
+                ('"I don\'t want to switch CRMs."',
+                 "Your current system isn't preventing $2,400/month in lost jobs. We can integrate with what you have or migrate in a few hours. ROI is fast."),
+                ('"I\'ll just have my office manager call customers. It\'s cheaper."',
+                 "Your office manager already spends 8–10 hrs/week on follow-up calls ($200–300 in labor) for a solution that doesn't work. SMS costs $60–80/month and actually gets responses."),
+                ('"This sounds too good to be true."',
+                 "It's not. We're showing you real numbers from a real landscaping business. The only reason it seems too good is because you've been tolerating losses for so long."),
+                ('"I need to think about it."',
+                 "Every day you wait costs $80–$100 in missed jobs. In 30 days that's another $2,400 gone. The decision should be easy: spend $1,500 to stop losing $2,400/month."),
+            ]
+        else:
+            objections = [
+                ('"I don\'t have the budget for this right now."',
+                 "You can't afford NOT to. Our $1,500 setup pays for itself in less than a month of recovered revenue."),
+                ('"We already handle this manually. It doesn\'t work."',
+                 "Manual processes are inconsistent and slow. Automation has 98% open rate and 45% response rate. The difference is the medium."),
+                ('"My customers don\'t want texts from us."',
+                 "They prefer it. In our implementations, zero complaints. Texts are asynchronous and give customers control."),
+                ('"We already have a system."',
+                 "Is it two-way? Most are one-way blasts. The magic is capturing responses automatically."),
+                ('"I don\'t want to switch systems."',
+                 "Your current system isn't preventing monthly losses. We can integrate or migrate quickly. ROI is fast."),
+                ('"I\'ll just have staff call. It\'s cheaper."',
+                 "Staff already spend hours on calls for a solution that doesn't work. Automation costs less and actually works."),
+                ('"This sounds too good to be true."',
+                 "It's not. We're showing real numbers from real businesses. The only reason it seems too good is because you've been tolerating the problem for so long."),
+                ('"I need to think about it."',
+                 "Every day you wait costs money. The decision should be easy: spend $1,500 to stop losing $2,400/month."),
+            ]
 
-    def _generate_results(self, pain_name):
-        """Generate results metrics based on pain type."""
-        base_reduction = 0.4  # 40% reduction
-        base_recovery = self.avg_revenue * 20 * base_reduction  # 20 apts/mo for small practice
-
-        results = {
-            'no-show rate': ('22%', f'{13}%', '↓ 40%'),
-            'revenue recovered': ('—', f'${base_recovery:,.0f}', f'+${base_recovery:,.0f}'),
-            'front desk time': ('8–10 hrs/wk', '1–2 hrs/wk', '↓ 80%'),
-            'sms cost': ('$0', '~$50', '—'),
-            'net monthly gain': ('—', f'~${base_recovery-50:,.0f}', f'ROI: {base_recovery*12/1500:.0f}%'),
-        }
-
-        return results
-
-    def _format_results_table(self, results):
-        """Format results as a markdown table."""
-        lines = [
-            "| Metric | Before | After | Change |",
-            "|--------|--------|-------|--------|"
-        ]
-        for metric, (before, after, change) in results.items():
-            lines.append(f"| {metric} | {before} | {after} | {change} |")
-        return '\n'.join(lines)
+        lines = ["\n\n## The Beliefs That Keep {} Owners Stuck (And Why They're Wrong)\n".format(self.business_type.title())]
+        for objection, truth in objections:
+            lines.append(f"### ❌ {objection}")
+            lines.append(f"\n**The truth:** {truth}\n")
+        return ''.join(lines)
