@@ -135,9 +135,9 @@
     "last_updated": "2026-03-15 06:17:39"
   },
   {
-    "id": "santé-beauty-creatives",
-    "business_name": "Santé Beauty Creatives",
-    "name": "Santé Beauty Creatives",
+    "id": "sant\u00e9-beauty-creatives",
+    "business_name": "Sant\u00e9 Beauty Creatives",
+    "name": "Sant\u00e9 Beauty Creatives",
     "website": "https://www.vagaro.com/googlemap/U2FsdGVkX1-~ch4iL0yfMsm725DqziWT3Udq2UvosPU=/services?rwg_token=AFd1xnEVkE0UqvZGbhlBDLxz8Q-xMBoI21h4GcnJe7lPhYCVIwSjU76PDeI80j2MHpBzycX1MdJFZJ7KJfVAvNeGoFs7zUPOmw=",
     "phone": "(952) 836-0816",
     "has_website": true,
@@ -821,8 +821,8 @@
     "email": "info@cosmicrevivalsalon.com",
     "notes": "Has full site - skip",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-16 19:29:50"
   },
   {
     "id": "inspire-hair-district",
