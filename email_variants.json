@@ -1,0 +1,20 @@
+{
+  "variants": [
+    {
+      "id": "v1",
+      "subject": "UW-Eau Claire student building salon websites",
+      "body": "Hey {owner_name},\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at {business_name} in {city} and noticed you're using {booking_platform} for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n{YOUR_PHONE}\n{PORTFOLIO_URL}"
+    },
+    {
+      "id": "v2",
+      "subject": "Custom website for {business_name} at a student rate",
+      "body": "Hi {owner_name},\n\nI came across {business_name} in {city} and saw you use {booking_platform} for bookings. Cool—that handles the appointments. But what about showcasing your team's work and telling your salon's story? You don't have that yet.\n\nI'm a skilled web dev and a UW-Eau Claire student building my portfolio. I'll build you a custom website for far less than an agency charges.\n\nIf you're interested, I can create a quick mockup for you. No cost, no pressure.\n\nBest,\nJustice\n{YOUR_PHONE}\n{PORTFOLIO_URL}"
+    }
+  ],
+  "default_variant": "v1",
+  "distribution": {
+    "v1": 0.5,
+    "v2": 0.5
+  },
+  "auto_promote": false
+}
