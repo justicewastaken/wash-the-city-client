@@ -1,187 +1,93 @@
-# Playwright Scraper Skill 🕷️
+# Search Reddit — Real-time Reddit Search for Clawdbot
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
-[![Playwright](https://img.shields.io/badge/Playwright-1.40+-blue.svg)](https://playwright.dev/)
+Search Reddit in real-time using OpenAI's `web_search` tool. Results are enriched with engagement stats and top comment excerpts.
 
-**[中文文檔](README_ZH.md)** | English
-
-A Playwright-based web scraping OpenClaw Skill with anti-bot protection. Successfully tested on complex websites like Discuss.com.hk.
-
-> 📦 **Installation:** See [INSTALL.md](INSTALL.md)  
-> 📚 **Full Documentation:** See [SKILL.md](SKILL.md)  
-> 💡 **Examples:** See [examples/README.md](examples/README.md)
-
----
-
-## ✨ Features
-
-- ✅ **Pure Playwright** — Modern, powerful, easy to use
-- ✅ **Anti-Bot Protection** — Hides automation, realistic UA
-- ✅ **Verified** — 100% success on Discuss.com.hk
-- ✅ **Simple to Use** — One-line commands
-- ✅ **Customizable** — Environment variable support
-
----
-
-## 🚀 Quick Start
-
-### Installation
+## Installation
 
 ```bash
-npm install
-npx playwright install chromium
+clawdhub install search-reddit
 ```
 
-### Usage
+Or manually:
+```bash
+cd ~/clawd/skills && git clone https://github.com/mvanhorn/clawdbot-skill-search-reddit search-reddit
+```
+
+## Setup
+
+Get your API key from https://platform.openai.com, then:
 
 ```bash
-# Quick scraping
-node scripts/playwright-simple.js https://example.com
-
-# Stealth mode (recommended)
-node scripts/playwright-stealth.js "https://m.discuss.com.hk/#hot"
+clawdbot config set skills.entries.search-reddit.apiKey "sk-YOUR-KEY"
 ```
 
----
-
-## 📖 Two Modes
-
-| Mode | Use Case | Speed | Anti-Bot |
-|------|----------|-------|----------|
-| **Simple** | Regular dynamic sites | Fast (3-5s) | None |
-| **Stealth** ⭐ | Sites with anti-bot | Medium (5-20s) | Medium-High |
-
-### Simple Mode
-
-For sites without anti-bot protection:
-
+Or set environment variable:
 ```bash
-node scripts/playwright-simple.js <URL>
+export OPENAI_API_KEY="sk-YOUR-KEY"
 ```
 
-### Stealth Mode (Recommended)
-
-For sites with Cloudflare or anti-bot protection:
-
+You can also set a shared key:
 ```bash
-node scripts/playwright-stealth.js <URL>
+clawdbot config set skills.entries.openai.apiKey "sk-YOUR-KEY"
 ```
 
-**Anti-Bot Techniques:**
-- Hide `navigator.webdriver`
-- Realistic User-Agent (iPhone)
-- Human-like behavior simulation
-- Screenshot and HTML saving support
+## Usage
 
----
-
-## 🎯 Customization
-
-All scripts support environment variables:
-
+### Basic Search
 ```bash
-# Show browser
-HEADLESS=false node scripts/playwright-stealth.js <URL>
-
-# Custom wait time (milliseconds)
-WAIT_TIME=10000 node scripts/playwright-stealth.js <URL>
-
-# Save screenshot
-SCREENSHOT_PATH=/tmp/page.png node scripts/playwright-stealth.js <URL>
-
-# Save HTML
-SAVE_HTML=true node scripts/playwright-stealth.js <URL>
-
-# Custom User-Agent
-USER_AGENT="Mozilla/5.0 ..." node scripts/playwright-stealth.js <URL>
+node scripts/search.js "Claude Code tips"
 ```
 
----
-
-## 📊 Test Results
-
-| Website | Result | Time |
-|---------|--------|------|
-| **Discuss.com.hk** | ✅ 200 OK | 5-20s |
-| **Example.com** | ✅ 200 OK | 3-5s |
-| **Cloudflare Protected** | ✅ Mostly successful | 10-30s |
-
----
-
-## 📁 File Structure
-
-```
-playwright-scraper-skill/
-├── scripts/
-│   ├── playwright-simple.js       # Simple mode
-│   └── playwright-stealth.js      # Stealth mode ⭐
-├── examples/
-│   ├── discuss-hk.sh              # Discuss.com.hk example
-│   └── README.md                  # More examples
-├── SKILL.md                       # Full documentation
-├── INSTALL.md                     # Installation guide
-├── README.md                      # This file
-├── README_ZH.md                   # Chinese documentation
-├── CONTRIBUTING.md                # Contribution guide
-├── CHANGELOG.md                   # Version history
-└── package.json                   # npm config
-```
-
----
-
-## 💡 Best Practices
-
-1. **Try web_fetch first** — OpenClaw's built-in tool is fastest
-2. **Use Simple for dynamic sites** — When no anti-bot protection
-3. **Use Stealth for protected sites** ⭐ — Main workhorse
-4. **Use specialized skills** — For YouTube, Reddit, etc.
-
----
-
-## 🐛 Troubleshooting
-
-### Getting 403 blocked?
-
-Use Stealth mode:
+### Time Filter
 ```bash
-node scripts/playwright-stealth.js <URL>
+node scripts/search.js --days 7 "breaking news"    # Last 7 days
+node scripts/search.js --days 1 "trending today"   # Last 24 hours
 ```
 
-### Cloudflare challenge?
-
-Increase wait time + headful mode:
+### Subreddit Filters
 ```bash
-HEADLESS=false WAIT_TIME=30000 node scripts/playwright-stealth.js <URL>
+node scripts/search.js --subreddits machinelearning,openai "agents"
+node scripts/search.js --exclude bots "real discussions"
 ```
 
-### Playwright not found?
-
-Reinstall:
+### Output Formats
 ```bash
-npm install
-npx playwright install chromium
+node scripts/search.js --compact "topic"      # Minimal output
+node scripts/search.js --links-only "topic"   # Just URLs
+node scripts/search.js --json "topic"         # JSON results
 ```
 
-More issues? See [INSTALL.md](INSTALL.md)
+## Chat Examples
 
----
+Just tell your Clawdbot:
+- "Search Reddit for what people are saying about Claude"
+- "Find posts in r/OpenAI from the last week"
+- "Get Reddit links about Kimi K2.5"
 
-## 🤝 Contributing
+## How It Works
 
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md)
+Uses OpenAI's Responses API with the `web_search` tool:
+- **Endpoint:** `/v1/responses`
+- **Model:** `gpt-5.2` (default)
+- **Features:** Date filtering, subreddit filtering, enrichment via Reddit JSON
 
----
+## Output Example
 
-## 📄 License
+```
+🔍 Searching Reddit: "Kimi K2.5" (last 7 days)...
 
-MIT License - See [LICENSE](LICENSE)
+**Kimi K2.5 impressions?**
+r/MachineLearning • 2026-01-22
+https://www.reddit.com/r/MachineLearning/comments/xxxxxx/...
+Score: 231 • Comments: 82 • Upvote ratio: 0.92
+Top comments:
+- user1 (120): Interesting that...
+- user2 (88): I tested it and...
 
----
+📎 Links (3):
+   https://www.reddit.com/r/MachineLearning/comments/xxxxxx/...
+```
 
-## 🔗 Links
+## License
 
-- [Playwright Official Docs](https://playwright.dev/)
-- [Full Documentation (SKILL.md)](SKILL.md)
-- [Installation Guide (INSTALL.md)](INSTALL.md)
-- [Examples (examples/)](examples/)
+MIT
