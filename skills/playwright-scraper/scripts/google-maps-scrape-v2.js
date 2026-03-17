@@ -14,13 +14,13 @@ async function scrapeGoogleMaps(searchQuery, maxResults = 30) {
 
   const encodedQuery = encodeURIComponent(searchQuery);
   const url = `https://www.google.com/maps/search/${encodedQuery}`;
-  console.log(`Navigating to: ${url}`);
+  console.error(`Navigating to: ${url}`);
 
   await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(8000);
 
-  // Scroll to load many results
-  console.log('Scrolling to load more results...');
+  // Scroll to load more results
+  console.error('Scrolling to load more results...');
   for (let i = 0; i < 15; i++) {
     await page.mouse.wheel(0, 3000);
     await page.waitForTimeout(2500);
@@ -42,14 +42,14 @@ async function scrapeGoogleMaps(searchQuery, maxResults = 30) {
     return Array.from(unique.entries()).map(([name, href]) => ({ name, href }));
   });
 
-  console.log(`Found ${results.length} businesses. Now extracting details from their pages...`);
+  console.error(`Found ${results.length} businesses. Now extracting details from their pages...`);
 
   const enriched = [];
 
   for (let i = 0; i < Math.min(results.length, maxResults); i++) {
     const { name, href } = results[i];
     try {
-      console.log(`  [${i+1}/${Math.min(results.length, maxResults)}] Opening: ${name}`);
+      console.error(`  [${i+1}/${Math.min(results.length, maxResults)}] Opening: ${name}`);
       
       // Go to the business's Google Maps place page
       await page.goto(href, { waitUntil: 'domcontentloaded', timeout: 20000 });
@@ -84,10 +84,10 @@ async function scrapeGoogleMaps(searchQuery, maxResults = 30) {
         has_website: data.website ? true : false
       });
 
-      console.log(`    → Website: ${data.website ? '✓' : '✗'} | Phone: ${data.phone || 'none'}`);
+      console.error(`    → Website: ${data.website ? '✓' : '✗'} | Phone: ${data.phone || 'none'}`);
       
     } catch (e) {
-      console.log(`  ✗ Error on ${name}: ${e.message}`);
+      console.error(`  ✗ Error on ${name}: ${e.message}`);
       enriched.push({ name, website: '', phone: '', has_website: false });
     }
   }
@@ -102,7 +102,7 @@ const max = parseInt(process.argv[3]) || 30;
 
 scrapeGoogleMaps(query, max)
   .then(results => {
-    console.log('\n=== FINAL RESULTS ===');
+    // Only JSON on stdout for parsing
     console.log(JSON.stringify(results, null, 2));
   })
   .catch(err => {

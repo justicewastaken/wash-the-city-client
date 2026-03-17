@@ -26,7 +26,14 @@ try:
     if result.returncode != 0:
         print(f"Scraper error: {result.stderr}", file=sys.stderr)
         sys.exit(1)
-    data = json.loads(result.stdout)
+    stdout = result.stdout.strip()
+    # Find the first '[' and last ']' to extract the JSON array
+    start_idx = stdout.find('[')
+    end_idx = stdout.rfind(']') + 1
+    if start_idx == -1 or end_idx == 0:
+        raise ValueError("No JSON array found in scraper output")
+    json_text = stdout[start_idx:end_idx]
+    data = json.loads(json_text)
 except Exception as e:
     print(f"Failed to run scraper: {e}", file=sys.stderr)
     sys.exit(1)

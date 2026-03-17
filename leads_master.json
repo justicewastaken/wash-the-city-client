@@ -9,10 +9,10 @@
     "booking_platform": "Phorest",
     "owner_first_name": "",
     "email": "hello@gemsalonspa.com",
-    "notes": "Booking only - no custom site",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:39:59"
   },
   {
     "id": "haus-salon",
@@ -54,10 +54,10 @@
     "booking_platform": "Rosy",
     "owner_first_name": "",
     "email": "owners@moxiesalon.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:02"
   },
   {
     "id": "petite-salon---st-paul",
@@ -159,10 +159,10 @@
     "booking_platform": "Meevo",
     "owner_first_name": "",
     "email": "liligalleria@lilisalonspa.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:05"
   },
   {
     "id": "bespoke-hair-artisans",
@@ -204,10 +204,10 @@
     "booking_platform": "Meevo",
     "owner_first_name": "",
     "email": "sparksalonstyle@gmail.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:09"
   },
   {
     "id": "the-hair-district-collective-maple-grove",
@@ -219,10 +219,10 @@
     "booking_platform": "Meevo",
     "owner_first_name": "",
     "email": "thehairdistrictmg@gmail.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:12"
   },
   {
     "id": "reflect-salon",
@@ -234,10 +234,10 @@
     "booking_platform": "Phorest",
     "owner_first_name": "",
     "email": "appointments@reflect.salon",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:16"
   },
   {
     "id": "kalla-lily-salon-&-spa",
@@ -249,10 +249,10 @@
     "booking_platform": "Phorest",
     "owner_first_name": "",
     "email": "jen@kallalily.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:19"
   },
   {
     "id": "signature-salon-of-woodbury",
@@ -264,10 +264,10 @@
     "booking_platform": "Phorest",
     "owner_first_name": "",
     "email": "signaturesalonofwoodbury@gmail.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:22"
   },
   {
     "id": "salon-ultimo",
@@ -279,10 +279,10 @@
     "booking_platform": "Meevo",
     "owner_first_name": "",
     "email": "info@salonultimo.com",
-    "notes": "Booking only",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:26"
   },
   {
     "id": "the-salon",
@@ -354,10 +354,10 @@
     "booking_platform": "Meevo",
     "owner_first_name": "",
     "email": "headlinessalonandspa@hotmail.com",
-    "notes": "Booking only - extra scrape",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:25:02"
   },
   {
     "id": "poppy-salon",
@@ -849,10 +849,10 @@
     "booking_platform": "Zenoti",
     "owner_first_name": "",
     "email": "info@fantasticsams.zenoti.com",
-    "notes": "Booking only - Brooklyn Center",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:25:05"
   },
   {
     "id": "tina-styles-llc",
@@ -894,10 +894,10 @@
     "booking_platform": "None",
     "owner_first_name": "",
     "email": "info@business.google.com",
-    "notes": "No website - just GMB listing - target",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:25:09"
   },
   {
     "id": "revolution-salon",
@@ -909,9 +909,9 @@
     "booking_platform": "Phorest",
     "owner_first_name": "",
     "email": "revolution@revolutionsalonmpls.com",
-    "notes": "Booking only - Brooklyn Center",
+    "notes": "Sent: initial",
     "city": null,
-    "status": "prospect",
-    "last_updated": "2026-03-15 06:17:39"
+    "status": "emailed",
+    "last_updated": "2026-03-17 17:40:29"
   }
 ]
