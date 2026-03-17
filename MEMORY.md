@@ -27,7 +27,7 @@
 ### Local Web Design Outreach
 - Video-based outreach: build polished HTML mock sites, record Loom walkthroughs, send as personalized pitches
 - Sites built: Daily Grind Cafe (Stillwater MN), The Silver Dollar (Menomonie), The Yard (Menomonie), EC Billiards (Eau Claire), Abbey Pub (Menomonie)
-- Abbey Pub deployed to GitHub Pages (justicewastaken/abbey-pub) with hash routing
+- Abbey Pub deployed to GitHub Pages (justicewastaken/abbey-pub) with hash routing, plus Manus preview: https://abbeypub-eu4kcd7b.manus.space/
 - Forward Media landing page at justicewastaken.github.io/forward-media
 - Best targets for fast closes: tattoo artists, barbers, mobile service businesses (solo operators, no gatekeepers)
 
