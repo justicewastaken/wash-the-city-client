@@ -892,7 +892,8 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
 document.addEventListener('DOMContentLoaded', function() {
   var form = document.querySelector('form[data-netlify]');
   if (form) {
-    form.addEventListener('netlify.success', function() {
+    form.addEventListener('netlify.success', function(e) {
+      e.preventDefault();
       var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) {
         submitBtn.textContent = 'Your request has been submitted.';
