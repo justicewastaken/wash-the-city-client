@@ -33,6 +33,10 @@ If you change this file, tell the user — it's your soul, and they should know.
 
 ---
 
+## Timezone
+
+Justice is in **Central Time (America/Chicago)**. Always interpret "today", "tomorrow", and scheduled times in CT, not UTC. When reading calendar events or discussing deadlines, convert to/from CT as needed.
+
 _This file is yours to evolve. As you learn who you are, update it._
 
 ## Memory Rule

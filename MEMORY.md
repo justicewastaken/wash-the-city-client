@@ -6,6 +6,7 @@
 - Run two businesses: Forward Commerce (performance marketing) and Forward Automation AI (AI receptionist/workflow automation)
 - ~6 years experience in paid social, CRM automation, direct response copywriting
 - Girlfriend based in Florence, Italy
+- **Timezone:** Central Time (America/Chicago)
 
 ## Active Projects
 
@@ -26,10 +27,18 @@
 
 ### Local Web Design Outreach
 - Video-based outreach: build polished HTML mock sites, record Loom walkthroughs, send as personalized pitches
-- Sites built: Daily Grind Cafe (Stillwater MN), The Silver Dollar (Menomonie), The Yard (Menomonie), EC Billiards (Eau Claire), Abbey Pub (Menomonie)
+- Sites built: Daily Grind Cafe (Stillwater MN) — **not interested**, The Silver Dollar (Menomonie) — pending approach, The Yard (Menomonie), EC Billiards (Eau Claire) — **not interested**, Abbey Pub (Menomonie)
 - Abbey Pub deployed to GitHub Pages (justicewastaken/abbey-pub) with hash routing, plus Manus preview: https://abbeypub-eu4kcd7b.manus.space/
 - Forward Media landing page at justicewastaken.github.io/forward-media
 - Best targets for fast closes: tattoo artists, barbers, mobile service businesses (solo operators, no gatekeepers)
+- **Plan:** Get referral from Abbey Pub owner on Thursday for The Silver Dollar; continue refining targeting
+
+### Website Sales Automation Pipeline
+- Daily automated outreach to local businesses (salons initially, expanding to tattoo/barbers/mobile)
+- Full pipeline: Google Maps scrape → Playwright enrichment (email/booking platform) → email generation → batch send
+- Scripts: `full_daily_pipeline.sh`, `daily_website_batch.py`, `enrich_salons_v2.js`
+- **Critical Issue:** Deliverability — emails bouncing with "limit reached" or "address not found." Likely sending to invalid/risky addresses.
+- **Next:** Add email validation during enrichment; test smaller batches; investigate warm-up/rate limiting.
 
 ### NTS Protection Services AI Receptionist
 - Built VAPI + Make.com AI receptionist ("Sarah") for father Troy's security company
@@ -38,9 +47,7 @@
 - $1,000 setup + $500/month engagement
 
 ### Tidy Turf (Dog Waste Removal)
-- Targeting Minneapolis, modeled after ScoopHero
-- Stack: GitHub Pages, Make.com webhook, Discord notifications, Facebook Pixel
-- Five Facebook ad variations created
+- **Scrapped** — side project; poor metrics, not viable
 
 ## Key Frameworks
 - Anthony Camacho desire-testing and gradualization for Facebook ads
@@ -51,3 +58,11 @@
 - GoHighLevel, Make.com, VAPI, n8n, Notion (primary workspace), Google Drive
 - GitHub (justicewastaken), Shopify, Facebook Ads Manager
 - Gmail accounts: justiceforanything@gmail.com, justice@forwardaffiliate.com
+
+## Integrations & Credentials
+### Google Workspace (Gmail/Calendar)
+- Auth method: OAuth service account (client_secret.json at `.config/gog/`)
+- Primary account: justiceforanything@gmail.com
+- Issue: keyring locked; set `GOG_KEYRING_PASSWORD` env var for non-interactive access
+- Reference: `docs/gog_setup.md`
+- Morning brief script reads calendars and sends Telegram summary at 7 AM CT
