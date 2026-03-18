@@ -671,7 +671,7 @@ footer a { color: var(--yellow); text-decoration: none; }
 
     <div class="hero-form-card">
       <h3>GET YOUR FREE ESTIMATE</h3>
-      <form id="contactForm" name="contact" data-netlify="true" method="POST" novalidate>
+      <form id="contactForm" name="contact" data-netlify="true" novalidate>
         <input type="hidden" name="form-name" value="contact">
         <input type="hidden" name="to" value="justiceforanything@gmail.com">
         <div class="form-row">
@@ -888,35 +888,42 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
 });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
   var form = document.querySelector('form[data-netlify]');
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var submitBtn = form.querySelector('button[type="submit"]');
+  if (!form) return;
+  
+  var handler = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    var submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+    }
+    
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function() {
       if (submitBtn) {
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
+        submitBtn.textContent = 'Your request has been submitted.';
+        submitBtn.classList.add('submitted');
       }
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
-      }).then(function() {
-        if (submitBtn) {
-          submitBtn.textContent = 'Your request has been submitted.';
-          submitBtn.classList.add('submitted');
-        }
-      }).catch(function() {
-        if (submitBtn) {
-          submitBtn.textContent = 'SEND MY REQUEST →';
-          submitBtn.disabled = false;
-        }
-        alert('Something went wrong. Please try again.');
-      });
+    }).catch(function() {
+      if (submitBtn) {
+        submitBtn.textContent = 'SEND MY REQUEST →';
+        submitBtn.disabled = false;
+      }
+      alert('Something went wrong. Please try again.');
     });
-  }
-});
+    
+    return false;
+  };
+  
+  form.addEventListener('submit', handler, true);
+})();
 </script>
 </body>
-</html><!-- redeploy Wed Mar 18 04:13:04 UTC 2026 -->
+</html>
