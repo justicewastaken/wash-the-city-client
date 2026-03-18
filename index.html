@@ -892,6 +892,7 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
 document.addEventListener('DOMContentLoaded', function() {
   var form = document.querySelector('form[data-netlify]');
   if (form) {
+    // Use capture phase to run before Netlify's own handler
     form.addEventListener('netlify.success', function(e) {
       e.preventDefault();
       var submitBtn = form.querySelector('button[type="submit"]');
@@ -900,7 +901,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.classList.add('submitted');
       }
-    });
+    }, true);
   }
 });
 </script>
