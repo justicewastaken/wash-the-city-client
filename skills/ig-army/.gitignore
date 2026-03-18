@@ -1,0 +1,9 @@
+# IG Army .gitignore
+.env
+sessions/*
+!sessions/.gitkeep
+logs/*
+!logs/.gitkeep
+content-bank/*.mp4
+content-bank/manifest.json
+node_modules/

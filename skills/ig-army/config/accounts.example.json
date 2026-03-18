@@ -1,0 +1,31 @@
+{
+  "source_account": {
+    "username": "your_main_account",
+    "session_file": "../sessions/source.json",
+    "proxy": null,
+    "notes": "Professional account - source of all content"
+  },
+  "satellite_accounts": [
+    {
+      "id": "sat_001",
+      "username": "satellite_account_1",
+      "password_env": "SAT_001_PASS",
+      "session_file": "../sessions/sat_001.json",
+      "proxy": {
+        "server": "http://proxy-provider.com:port",
+        "username": "proxy_user_1",
+        "password_env": "PROXY_001_PASS"
+      },
+      "fingerprint": {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "viewport": { "width": 1366, "height": 768 },
+        "locale": "en-US",
+        "timezone": "America/Chicago"
+      },
+      "status": "active",
+      "last_post": null,
+      "last_health_check": null,
+      "notes": ""
+    }
+  ]
+}

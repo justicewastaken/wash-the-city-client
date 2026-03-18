@@ -1,0 +1,6 @@
+.env
+config/accounts.json
+sessions/
+content-bank/*.mp4
+logs/
+node_modules/
