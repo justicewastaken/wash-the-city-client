@@ -912,66 +912,38 @@ footer a { color: var(--yellow); text-decoration: none; }
   </div>
   <div class="photos-grid" id="photosGrid">
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_50---860c3cce-80d0-4929-a01c-8fb3f950c1a8.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_51---2bd86324-5e3d-45b4-b016-0255fb232684.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_52---e16feed6-616f-4554-9cea-2e1bf181fb28.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_53---765eeb50-1b46-4a17-89a2-b2c73c804d69.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_54---505121e4-3f0c-4cb9-85a1-271bae64ce8a.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_56---205888eb-ba50-4803-bf3b-b599c66f3f2e.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="images/reviews/file_57---323094f9-bcad-4fa8-a492-216459ad5432.jpg" alt="Customer photo" loading="lazy">
-      <div class="overlay"><span>Customer Photo</span></div>
-    </div>
-    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_58---6901cc2a-f876-4f7d-b804-e3f2d89872a9.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <!-- Hidden additional photos -->
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_59---2d589468-4b0d-4226-a011-7dcdfc62719b.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_60---099ee16c-b3f9-4ad8-958c-33176c376d21.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_61---2d52ca02-fd85-42d6-9ee8-ea2ed9523d2d.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_62---d94c27cd-c423-4cc2-ac59-e5626f8d54fb.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_63---6db5c8cc-1151-433b-9d1e-26700963b609.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_64---57e33b0b-e9f9-4cdb-8622-b6a355a45be8.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
-    <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
+    <div class="gallery-item" onclick="openLightbox(this)">
       <img src="images/reviews/file_65---d3e64d87-4051-44f4-b9f8-8d6fe0bb80cb.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
     </div>
+    <!-- Hidden extra photos -->
     <div class="gallery-item photo-hidden" onclick="openLightbox(this)">
       <img src="images/reviews/file_66---835dc772-0060-4768-ab23-54caa5fbea6b.jpg" alt="Customer photo" loading="lazy">
       <div class="overlay"><span>Customer Photo</span></div>
@@ -990,7 +962,7 @@ footer a { color: var(--yellow); text-decoration: none; }
     </div>
   </div>
   <div class="photos-toggle">
-    <button id="togglePhotosBtn" class="btn-outline">Show All Photos</button>
+    <button id="togglePhotosBtn" class="btn-outline">See more</button>
   </div>
 </section>
 
@@ -1200,7 +1172,7 @@ const reviews = [
     hiddenItems.forEach(function(item) {
       item.style.display = isExpanded ? 'block' : 'none';
     });
-    btn.textContent = isExpanded ? 'Show Less Photos' : 'Show All Photos';
+    btn.textContent = isExpanded ? 'See less' : 'See more';
   });
 })();
 </script>
