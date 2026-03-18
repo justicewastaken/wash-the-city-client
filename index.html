@@ -671,11 +671,8 @@ footer a { color: var(--yellow); text-decoration: none; }
 
     <div class="hero-form-card">
       <h3>GET YOUR FREE ESTIMATE</h3>
-      <form id="contactForm" action="https://formsubmit.co/justiceforanything@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Wash The City Lead!">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="">
+      <form id="contactForm" name="contact" data-netlify="true" method="POST">
+        <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -871,7 +868,7 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
-document.querySelector('input[name="_next"]').value = window.location.href;
+
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -887,6 +884,19 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
+});
+</script>
+<script src="https://cdn.netlify.com/v1/netlify.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var form = document.querySelector('form[data-netlify]');
+  if (form) {
+    form.addEventListener('netlify.success', function() {
+      form.style.display = 'none';
+      var success = document.getElementById('formSuccess');
+      if (success) success.classList.add('show');
+    });
+  }
 });
 </script>
 </body>
