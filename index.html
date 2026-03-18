@@ -826,10 +826,8 @@ footer a { color: var(--yellow); text-decoration: none; }
     <div class="section-label">What People Say</div>
     <h2 class="section-title">CUSTOMER REVIEWS</h2>
   </div>
-  <div class="testimonial-card">
-    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <p class="testimonial-text">"We recommend Wash The City for any of your power washing needs. We had our house, shed and deck washed. Darin was professional and cared for our personal items. Thanks for a job well done!"</p>
-    <div class="testimonial-author">Dave &amp; Gloria Davis</div>
+  <div class="testimonial-carousel" id="testimonialCarousel">
+    <!-- Reviews will be injected here by JavaScript -->
   </div>
 </section>
 
@@ -940,6 +938,66 @@ function submitForm() {
   var params = new URLSearchParams(formData).toString();
   xhr.send(params);
 }
+
+// Testimonial carousel
+const reviews = [
+  {
+    text: "We recommend Wash The City for any of your power washing needs. We had our house, shed and deck washed. Darin was professional and cared for our personal items. Thanks for a job well done!",
+    author: "Dave & Gloria Davis",
+    rating: 5
+  },
+  {
+    text: "YOUR_GOOGLE_REVIEW_2_HERE",
+    author: "Reviewer Name",
+    rating: 5
+  },
+  {
+    text: "YOUR_GOOGLE_REVIEW_3_HERE",
+    author: "Reviewer Name",
+    rating: 5
+  },
+  {
+    text: "YOUR_GOOGLE_REVIEW_4_HERE",
+    author: "Reviewer Name",
+    rating: 5
+  },
+  {
+    text: "YOUR_GOOGLE_REVIEW_5_HERE",
+    author: "Reviewer Name",
+    rating: 5
+  }
+];
+
+(function() {
+  const container = document.getElementById('testimonialCarousel');
+  if (!container) return;
+
+  let currentIndex = 0;
+  const interval = 4000; // 4 seconds
+
+  function renderReview(index) {
+    const review = reviews[index];
+    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+    container.innerHTML = `
+      <div class="testimonial-card" style="opacity:1; transform:translateY(0); transition:opacity 0.5s ease, transform 0.5s ease;">
+        <div class="stars">${stars}</div>
+        <p class="testimonial-text">"${review.text}"</p>
+        <div class="testimonial-author">${review.author}</div>
+      </div>
+    `;
+  }
+
+  function nextReview() {
+    currentIndex = (currentIndex + 1) % reviews.length;
+    renderReview(currentIndex);
+  }
+
+  // Initial render
+  renderReview(currentIndex);
+
+  // Auto-rotate
+  setInterval(nextReview, interval);
+})();
 </script>
 </body>
 </html>
