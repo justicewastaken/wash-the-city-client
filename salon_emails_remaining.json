@@ -30,5 +30,21 @@
     "lead_name": "The Chair Salon",
     "lead_id": "the-chair-salon",
     "template": "initial"
+  },
+  {
+    "to": "info@getsquire.com",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at Ace of Fades Barber Lounge in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "Ace of Fades Barber Lounge",
+    "lead_id": "ace-of-fades-barber-lounge",
+    "template": "initial"
+  },
+  {
+    "to": "info@appt.cm",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at Stilo Cuts Barber Shop-Uptown in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "Stilo Cuts Barber Shop-Uptown",
+    "lead_id": "stilo-cuts-barber-shop-uptown",
+    "template": "initial"
   }
 ]
