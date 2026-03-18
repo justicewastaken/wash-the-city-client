@@ -87,10 +87,16 @@ if not new_rows:
 # Combine existing and new
 all_rows = existing_rows + new_rows
 
+# Sanitize: ensure each row contains only the fields in final_header (drop extra keys like None)
+cleaned_rows = []
+for row in all_rows:
+    cleaned = {k: row.get(k, '') for k in final_header}
+    cleaned_rows.append(cleaned)
+
 # Write full CSV with unified header
 with open(salon_leads_csv, 'w', newline='', encoding='utf-8') as f:
     writer = csv.DictWriter(f, fieldnames=final_header)
     writer.writeheader()
-    writer.writerows(all_rows)
+    writer.writerows(cleaned_rows)
 
-print(f"Added {len(new_rows)} new leads to salon_leads_csv (total {len(all_rows)}).")
+print(f"Added {len(new_rows)} new leads to salon_leads_csv (total {len(cleaned_rows)}).")

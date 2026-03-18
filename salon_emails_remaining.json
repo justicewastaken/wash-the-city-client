@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "to": "info@bradleydouglassalonspa.com",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at BRADLEY DOUGLAS SALON SPA in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "BRADLEY DOUGLAS SALON SPA",
+    "lead_id": "bradley-douglas-salon-spa",
+    "template": "initial"
+  },
+  {
+    "to": "info@northeasthairandco.com",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at Northeast Hair and Co. in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "Northeast Hair and Co.",
+    "lead_id": "northeast-hair-and-co.",
+    "template": "initial"
+  },
+  {
+    "to": "info@avanthair.com",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at Avant Hair & Cosmetics in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "Avant Hair & Cosmetics",
+    "lead_id": "avant-hair-&-cosmetics",
+    "template": "initial"
+  },
+  {
+    "to": "thechairsalonmpls@gmail.com",
+    "subject": "UW-Eau Claire student building salon websites",
+    "body": "Hey there,\n\nI'm a UW-Eau Claire student learning web dev and building my portfolio. I was looking at The Chair Salon in Minneapolis and noticed you're using a booking system for appointments. That's fine for bookings, but you don't have a proper website to showcase your work and tell your story.\n\nI can create a custom site for you at a rate well below an agency's. I'm not a big shop—just me, trying to get real experience.\n\nIf you're up for it, I'll throw together a quick mockup for you to review—no cost, no pressure. Just let me know what you think.\n\nBest,\nJustice\n715-308-7949\nhttps://justicewastaken.github.io/forward-media/",
+    "lead_name": "The Chair Salon",
+    "lead_id": "the-chair-salon",
+    "template": "initial"
+  }
+]
