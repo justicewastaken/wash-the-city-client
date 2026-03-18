@@ -673,6 +673,7 @@ footer a { color: var(--yellow); text-decoration: none; }
       <h3>GET YOUR FREE ESTIMATE</h3>
       <form id="contactForm" name="contact" data-netlify="true" method="POST">
         <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="to" value="justiceforanything@gmail.com">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -892,9 +893,12 @@ document.addEventListener('DOMContentLoaded', function() {
   var form = document.querySelector('form[data-netlify]');
   if (form) {
     form.addEventListener('netlify.success', function() {
-      form.style.display = 'none';
-      var success = document.getElementById('formSuccess');
-      if (success) success.classList.add('show');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.textContent = 'Your request has been submitted.';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('submitted');
+      }
     });
   }
 });
