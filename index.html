@@ -671,9 +671,7 @@ footer a { color: var(--yellow); text-decoration: none; }
 
     <div class="hero-form-card">
       <h3>GET YOUR FREE ESTIMATE</h3>
-      <form id="contactForm" name="contact" data-netlify="true" novalidate>
-        <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="to" value="justiceforanything@gmail.com">
+      <form id="contactForm" name="contact" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -705,12 +703,21 @@ footer a { color: var(--yellow); text-decoration: none; }
           <label for="message">Project Details</label>
           <textarea id="message" name="message" placeholder="Property size, special requests..."></textarea>
         </div>
-        <button type="submit" class="form-submit">SEND MY REQUEST &#8594;</button>
+        <button type="button" class="form-submit" onclick="submitForm()">SEND MY REQUEST &#8594;</button>
       </form>
       <div class="form-success" id="formSuccess">
         <h3>&#9989; REQUEST SENT!</h3>
         <p>We'll be in touch shortly with your free estimate.</p>
       </div>
+      <form name="contact" data-netlify="true" hidden>
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="to" value="justiceforanything@gmail.com">
+        <input type="hidden" name="name">
+        <input type="hidden" name="phone">
+        <input type="hidden" name="email">
+        <input type="hidden" name="service">
+        <input type="hidden" name="message">
+      </form>
     </div>
   </div>
 </section>
@@ -888,42 +895,51 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
 });
 </script>
 <script>
-(function() {
-  var form = document.querySelector('form[data-netlify]');
-  if (!form) return;
+function submitForm() {
+  var form = document.getElementById('contactForm');
+  var submitBtn = form.querySelector('.form-submit');
+  var formData = new FormData(form);
   
-  var handler = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    var submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.textContent = 'Sending...';
-      submitBtn.disabled = true;
-    }
-    
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    }).then(function() {
+  // Append Netlify fields
+  formData.append('form-name', 'contact');
+  formData.append('to', 'justiceforanything@gmail.com');
+  
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+  }
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/');
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
       if (submitBtn) {
         submitBtn.textContent = 'Your request has been submitted.';
         submitBtn.classList.add('submitted');
+        form.reset();
       }
-    }).catch(function() {
+    } else {
       if (submitBtn) {
         submitBtn.textContent = 'SEND MY REQUEST →';
         submitBtn.disabled = false;
       }
       alert('Something went wrong. Please try again.');
-    });
-    
-    return false;
+    }
   };
   
-  form.addEventListener('submit', handler, true);
-})();
+  xhr.onerror = function() {
+    if (submitBtn) {
+      submitBtn.textContent = 'SEND MY REQUEST →';
+      submitBtn.disabled = false;
+    }
+    alert('Something went wrong. Please try again.');
+  };
+  
+  var params = new URLSearchParams(formData).toString();
+  xhr.send(params);
+}
 </script>
 </body>
 </html>
