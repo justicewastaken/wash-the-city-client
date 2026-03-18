@@ -1,9 +1,0 @@
-{
-  "auto_apply": false,
-  "max_batch_size": 30,
-  "min_batch_size": 5,
-  "template_variants": ["default"],
-  "metrics_window_days": 3,
-  "reorder_by_performance": true,
-  "adjust_batch_size": true
-}
