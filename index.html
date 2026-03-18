@@ -892,16 +892,30 @@ document.querySelectorAll('.service-card, .gallery-item, .testimonial-card').for
 document.addEventListener('DOMContentLoaded', function() {
   var form = document.querySelector('form[data-netlify]');
   if (form) {
-    // Use capture phase to run before Netlify's own handler
-    form.addEventListener('netlify.success', function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       var submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) {
-        submitBtn.textContent = 'Your request has been submitted.';
+        submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
-        submitBtn.classList.add('submitted');
       }
-    }, true);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function() {
+        if (submitBtn) {
+          submitBtn.textContent = 'Your request has been submitted.';
+          submitBtn.classList.add('submitted');
+        }
+      }).catch(function() {
+        if (submitBtn) {
+          submitBtn.textContent = 'SEND MY REQUEST →';
+          submitBtn.disabled = false;
+        }
+        alert('Something went wrong. Please try again.');
+      });
+    });
   }
 });
 </script>
